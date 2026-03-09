@@ -1,226 +1,630 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="" />
-        <meta name="author" content="" />
-        <title>Samelle - Sam Longley</title>
-        <!-- Favicon-->
-        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
-        <!-- Font Awesome icons (free version)-->
-        <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
-        <!-- Google fonts-->
-        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
-        <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
-        <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="css/styles.css" rel="stylesheet" />
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-ECGTRCPQ0H"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Samelle — HubSpot & Marketing Consulting</title>
+  <meta name="description" content="Sam Longley — HubSpot consultant and marketing operations specialist helping businesses get more from their commercial systems.">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Outfit:wght@100..900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-  gtag('config', 'G-ECGTRCPQ0H');
-</script>
+    :root {
+      --navy:   #1a2b4a;
+      --blue:   #1f5981;
+      --blue-mid: #3a65b0;
+      --amber:  #f2b23a;
+      --amber-light: #f5c46e;
+      --cream:  #fdf8f2;
+      --white:  #ffffff;
+      --text:   #2a2a2a;
+      --muted:  #6b7280;
+      --border: #e5e7eb;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      color: var(--text);
+      background: var(--cream);
+      line-height: 1.7;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.2rem 6vw;
+      background: rgba(253, 248, 242, 0.92);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(232, 160, 48, 0.15);
+      transition: box-shadow 0.3s;
+    }
+
+    nav.scrolled { box-shadow: 0 2px 20px rgba(26, 43, 74, 0.08); }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      text-decoration: none;
+    }
+
+    .logo-img {
+      height: 36px;
+      width: auto;
+    }
+
+    .logo-wordmark {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 600;
+      font-size: 1.35rem;
+      color: var(--navy);
+      letter-spacing: -0.01em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 0.88rem;
+      font-weight: 400;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--navy);
+      text-decoration: none;
+      opacity: 0.7;
+      transition: opacity 0.2s, color 0.2s;
+    }
+
+    .nav-links a:hover { opacity: 1; color: var(--blue); }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 120px 6vw 80px;
+      position: relative;
+      overflow: hidden;
+      background-image: url('assets/img/header-bg.jpg');
+      background-size: cover;
+      background-position: center 40%;
+    }
+
+    #hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to right,
+        rgba(10, 20, 40, 0.72) 0%,
+        rgba(10, 20, 40, 0.45) 60%,
+        rgba(10, 20, 40, 0.2) 100%
+      );
+      pointer-events: none;
+    }
+
+    #hero::after {
+      content: '';
+      position: absolute;
+      bottom: 8%; right: 8%;
+      width: 280px; height: 280px;
+      border-radius: 50%;
+      border: 1px solid rgba(232, 160, 48, 0.3);
+      pointer-events: none;
+      animation: breathe 6s ease-in-out infinite;
+    }
+
+    @keyframes breathe {
+      0%, 100% { transform: scale(1); opacity: 0.4; }
+      50%       { transform: scale(1.04); opacity: 0.8; }
+    }
+
+    .hero-inner {
+      max-width: 760px;
+      position: relative;
+      z-index: 1;
+      animation: fadeUp 0.9s ease both;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(28px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    h1 {
+      font-family: 'Outfit', sans-serif;
+      font-size: clamp(2.4rem, 5vw, 4rem);
+      font-weight: 600;
+      line-height: 1.15;
+      color: var(--white);
+      margin-bottom: 1.4rem;
+      letter-spacing: -0.02em;
+    }
+
+    h1 em {
+      font-style: normal;
+      color: var(--amber-light);
+    }
+
+    .hero-sub {
+      font-size: 1.15rem;
+      color: rgba(255,255,255,0.75);
+      max-width: 520px;
+      margin-bottom: 2.4rem;
+      font-weight: 300;
+    }
+
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--amber-light);
+      margin-bottom: 1.4rem;
+    }
+
+    .hero-eyebrow::before {
+      content: '';
+      display: block;
+      width: 28px; height: 2px;
+      background: var(--amber-light);
+      border-radius: 2px;
+    }
+
+    .btn-group { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+    .btn {
+      display: inline-block;
+      padding: 0.75rem 1.8rem;
+      border-radius: 4px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 500;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: var(--amber);
+      color: var(--white);
+    }
+    .btn-primary:hover { background: var(--blue); transform: translateY(-1px); }
+
+    .btn-outline {
+      border: 1.5px solid var(--cream);
+      color: var(--cream);
+    }
+    .btn-outline:hover { border: 1.5px solid var(--blue); background: var(--blue); color: var(--white); transform: translateY(-1px); }
+
+    /* ── SECTION SHARED ── */
+    section { padding: 90px 6vw; }
+
+    .section-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--amber);
+      margin-bottom: 1rem;
+    }
+
+    .section-label::before {
+      content: '';
+      display: block;
+      width: 22px; height: 2px;
+      background: var(--amber);
+      border-radius: 2px;
+    }
+
+    h2 {
+      font-family: 'Outfit', sans-serif;
+      font-size: clamp(1.7rem, 3vw, 2.5rem);
+      font-weight: 600;
+      color: var(--navy);
+      line-height: 1.2;
+      margin-bottom: 1.2rem;
+      letter-spacing: -0.02em;
+    }
+
+    /* ── ABOUT ── */
+    #about { background: var(--white); }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5vw;
+      align-items: center;
+      max-width: 1100px;
+    }
+
+    .about-text p {
+      color: var(--muted);
+      margin-bottom: 1rem;
+      font-size: 1rem;
+    }
+
+    .about-text p:last-of-type { margin-bottom: 0; }
+
+    .about-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+
+    .stat-card {
+      background: var(--cream);
+      border-radius: 8px;
+      padding: 1.8rem 1.5rem;
+      border-left: 3px solid var(--amber);
+    }
+
+    .stat-num {
+      font-family: 'Outfit', sans-serif;
+      font-size: 2.2rem;
+      font-weight: 600;
+      color: var(--navy);
+      line-height: 1;
+      margin-bottom: 0.4rem;
+    }
+
+    .stat-label {
+      font-size: 0.82rem;
+      color: var(--muted);
+      font-weight: 400;
+      letter-spacing: 0.02em;
+    }
+
+    /* ── SERVICES ── */
+    #services { background: var(--cream); }
+
+    .services-header { max-width: 560px; margin-bottom: 3rem; }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      max-width: 1100px;
+    }
+
+    .service-card {
+      background: var(--white);
+      border-radius: 8px;
+      padding: 2rem;
+      border: 1px solid var(--border);
+      transition: box-shadow 0.25s, transform 0.25s, border-color 0.25s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--blue-mid), var(--amber));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s ease;
+    }
+
+    .service-card:hover {
+      box-shadow: 0 8px 32px rgba(26, 43, 74, 0.1);
+      transform: translateY(-3px);
+      border-color: transparent;
+    }
+
+    .service-card:hover::before { transform: scaleX(1); }
+
+    .service-icon {
+      width: 44px; height: 44px;
+      border-radius: 8px;
+      background: linear-gradient(135deg, rgba(43, 77, 140, 0.1), rgba(232, 160, 48, 0.1));
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 1.2rem;
+      font-size: 1.2rem;
+      color: var(--blue-mid);
+    }
+
+    .service-card h3 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 0.6rem;
+    }
+
+    .service-card p {
+      font-size: 0.93rem;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    /* ── CONTACT ── */
+    #contact {
+      background: var(--blue);
+      color: var(--white);
+    }
+
+    #contact .section-label { color: var(--amber-light); }
+    #contact .section-label::before { background: var(--amber-light); }
+
+    #contact h2 { color: var(--white); }
+
+    .contact-inner {
+      max-width: 680px;
+    }
+
+    .contact-sub {
+      color: rgba(255,255,255,0.6);
+      font-size: 1rem;
+      margin-bottom: 2.8rem;
+    }
+
+    .contact-links {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .contact-link {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      text-decoration: none;
+      padding: 1rem 1.4rem;
+      border-radius: 6px;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.04);
+      transition: background 0.2s, border-color 0.2s, transform 0.2s;
+      max-width: 420px;
+    }
+
+    .contact-link:hover {
+      background: rgba(232, 160, 48, 0.12);
+      border-color: rgba(232, 160, 48, 0.4);
+      transform: translateX(4px);
+    }
+
+    .contact-link-icon {
+      width: 38px; height: 38px;
+      border-radius: 6px;
+      background: rgba(232, 160, 48, 0.2);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      font-size: 1rem;
+      color: var(--amber-light);
+    }
+
+    .contact-link-text strong {
+      display: block;
+      color: var(--white);
+      font-size: 0.88rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      opacity: 0.6;
+      margin-bottom: 0.1rem;
+    }
+
+    .contact-link-text span {
+      color: rgba(255,255,255,0.9);
+      font-size: 0.97rem;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--navy);
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding: 1.8rem 6vw;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .footer-brand {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.1rem;
+      color: rgba(255,255,255,0.4);
+    }
+
+    .footer-copy {
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.3);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 700px) {
+      .about-grid { grid-template-columns: 1fr; }
+      .about-stats { grid-template-columns: 1fr 1fr; }
+      .nav-links { display: none; }
+      section { padding: 70px 5vw; }
+    }
+  </style>
 </head>
-    <body id="page-top">
-        <!-- Navigation-->
-        <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
-            <div class="container">
-                <a class="navbar-brand" href="#page-top"><img src="assets/img/Samelle_Logo_Colour-01.png" alt="..." /></a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                    Menu
-                    <i class="fas fa-bars ms-1"></i>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarResponsive">
-                    <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
-                        <li class="nav-item"><a class="nav-link" href="#services">About</a></li>
-                        <!--<li class="nav-item"><a class="nav-link" href="#portfolio">Portfolio</a></li>-->
-                        <li class="nav-item"><a class="nav-link" href="#about">Services</a></li>
-                        <!--<li class="nav-item"><a class="nav-link" href="#team">Team</a></li>-->
-                        <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-        <!-- Masthead-->
-        <header class="masthead">
-            <div class="container">
-                <div class="masthead-subheading">Sam Longley is</div>
-                <div class="masthead-heading text-uppercase">Samelle</div>
-                <a class="btn btn-primary btn-xl text-uppercase" href="#services">Tell Me More</a>
-            </div>
-        </header>
-        <!-- Services-->
-        <section class="page-section" id="services">
-            <div class="container">
-                <div class="text-center">
-                    <h2 class="section-heading text-uppercase">About</h2>
-                    <h3 class="section-subheading text-muted">Hi, I’m Sam – a marketing professional with over 15 years’ experience 
-                        <br>helping businesses turn complex ideas into clear, effective communication.
+<body>
 
-                    <br><br>I came into marketing with a simple goal: to make life easier for marketers and
-                    <br>stakeholders by simplifying what’s complicated and finding practical solutions that work. 
-                    <br><br>I enjoy the technical side – connecting systems, streamlining processes,
-                    <br>and helping teams get the most from their tools, particularly HubSpot and other CMS platforms.
-                    <br><br>Whether it’s building campaigns, structuring automation, or improving reporting, 
-                    <br>I like to dig into the details and create order from the chaos — always with a friendly, collaborative approach.</h3>
-                </div>
-                <div class="row text-center">
-                    <div class="col-md-4">
-                        <span class="fa-stack fa-4x">
-                            <i class="fas fa-circle fa-stack-2x text-primary"></i>
-                            <i class="fa-brands fa-hubspot fa-stack-1x fa-inverse"></i>
-                        </span>
-                        <h4 class="my-3">HubSpot</h4>
-                        <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
-                    </div>
-                    <div class="col-md-4">
-                        <span class="fa-stack fa-4x">
-                            <i class="fas fa-circle fa-stack-2x text-primary"></i>
-                            <i class="fa-solid fa-users-gear fa-stack-1x fa-inverse"></i>
-                        </span>
-                        <h4 class="my-3">Marketing Operations</h4>
-                        <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
-                    </div>
-                    <div class="col-md-4">
-                        <span class="fa-stack fa-4x">
-                            <i class="fas fa-circle fa-stack-2x text-primary"></i>
-                            <i class="fa-solid fa-wand-magic-sparkles fa-stack-1x fa-inverse"></i>
-                        </span>
-                        <h4 class="my-3">Trusted Confidence</h4>
-                        <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        <!-- About-->
-        <section class="page-section" id="about">
-            <div class="container">
-                <div class="text-center">
-                    <h2 class="section-heading text-uppercase">Services</h2>
-                    <h3 class="section-subheading text-muted">I’ve worked with multinationals, B2B software companies, and smaller businesses alike 
-                        <br>– as an employee, freelancer, and now director of my own company.<br> 
-                        <br>My background means I understand how marketing fits within wider business goals, 
-                        <br>and I know how to get things done across different teams, cultures, and regions.<br>
-                        <br>I focus on building systems and processes that make marketing easier 
-                        <br>— so you can spend less time firefighting and more time driving results.
-                    </h3>
-                </div>
-                <ul class="timeline">
-                    <li>
-                        <div class="timeline-image"><img class="rounded-circle img-fluid" src="assets/img/about/1.png" alt="..." /></div>
-                        <div class="timeline-panel">
-                            <div class="timeline-heading">
-                                <h4>HubSpot Setup & Optimisation</h4>
-                                <!--<h4 class="subheading">Our Humble Beginnings</h4>-->
-                            </div>
-                            <div class="timeline-body"><p class="text-muted">From CRM to automation and reporting.</p></div>
-                        </div>
-                    </li>
-                    <li class="timeline-inverted">
-                        <div class="timeline-image"><img class="rounded-circle img-fluid" src="assets/img/about/2.png" alt="..." /></div>
-                        <div class="timeline-panel">
-                            <div class="timeline-heading">
-                                <h4>Email Marketing & Automation</h4>
-                                <!--<h4 class="subheading">An Agency is Born</h4>-->
-                            </div>
-                            <div class="timeline-body"><p class="text-muted">Nurture journeys, lead generation, customer and partner campaigns.</p></div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="timeline-image"><img class="rounded-circle img-fluid" src="assets/img/about/3.png" alt="..." /></div>
-                        <div class="timeline-panel">
-                            <div class="timeline-heading">
-                                <h4>Website Management</h4>
-                                <!--<h4 class="subheading">Transition to Full Service</h4>-->
-                            </div>
-                            <div class="timeline-body"><p class="text-muted">Updates, structure, and content improvements.</p></div>
-                        </div>
-                    </li>
-                    <li class="timeline-inverted">
-                        <div class="timeline-image"><img class="rounded-circle img-fluid" src="assets/img/about/4.png" alt="..." /></div>
-                        <div class="timeline-panel">
-                            <div class="timeline-heading">
-                                <h4>Webinar Setup & Management</h4>
-                                <!--<h4 class="subheading">Phase Two Expansion</h4>-->
-                            </div>
-                            <div class="timeline-body"><p class="text-muted">End-to-end support for live events and follow-up.</p></div>
-                        </div>
-                    </li>
-                                        <li>
-                        <div class="timeline-image"><img class="rounded-circle img-fluid" src="assets/img/about/5.png" alt="..." /></div>
-                        <div class="timeline-panel">
-                            <div class="timeline-heading">
-                                <h4>Reporting & Analytics</h4>
-                                <!--<h4 class="subheading">Transition to Full Service</h4>-->
-                            </div>
-                            <div class="timeline-body"><p class="text-muted">Clear, actionable insights from your marketing activity.</p></div>
-                        </div>
-                    </li>
-                    <li class="timeline-inverted">
-                        <div class="timeline-image"><img class="rounded-circle img-fluid" src="assets/img/about/6.png" alt="..." /></div>
-                        <div class="timeline-panel">
-                            <div class="timeline-heading">
-                                <h4>Collaboration & Consultancy</h4>
-                                <!--<h4 class="subheading">Phase Two Expansion</h4>-->
-                            </div>
-                            <div class="timeline-body"><p class="text-muted">Working directly with your team or on contract to deliver results.</p></div>
-                        </div>
-                    </li>
+  <!-- NAV -->
+  <nav id="nav">
+    <a href="#hero" class="nav-logo">
+      <!-- Replace the src below with your actual logo file, e.g. src="logo.svg" -->
+      <!-- If you don't have a logo file yet, the wordmark below will show instead -->
+      <img src="assets/img/Samelle_Logo_Colour-01.png" alt="Samelle" class="logo-img">
+      <!--<span class="logo-wordmark">Samelle</span>-->
+    </a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
 
-                    <!--<li class="timeline-inverted">
-                        <div class="timeline-image">
-                            <h4>
-                                Be Part
-                                <br />
-                                Of Our
-                                <br />
-                                Story!
-                            </h4>
-                        </div>-->
-                    </li>
-                </ul>
-            </div>
-        </section>
-        <!-- Contact-->
-        <section class="page-section" id="contact">
-            <div class="container">
-                <div class="text-center">
-                    <h2 class="section-heading text-uppercase">Contact</h2>
-                    <h2 class="section-subheading text-muted"><a href="mailto:sam@samelle.co.uk">sam@samelle.co.uk</a></h2>
-                    <br>
-                    <h2 class="section-subheading text-muted"><a href="https://www.linkedin.com/in/samlongley/_blank">LinkedIn</a></h2>
-                </div>
-                
-            </div>
-        </section>
-        <!-- Footer-->
-        <footer class="footer py-4">
-            <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-lg-4 text-lg-start">Copyright &copy; Samelle Ltd</div>
-                    <div class="col-lg-4 my-3 my-lg-0">
-                        
-                    </div>
-                    <div class="col-lg-4 text-lg-end">
-                        <a class="link-dark text-decoration-none me-3" href="#!">Privacy Policy</a>
-                    </div>
-                </div>
-            </div>
-        </footer>
-        
-        <!-- Bootstrap core JS-->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-        <!-- Core theme JS-->
-        <script src="js/scripts.js"></script>
-        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
-        <!-- * *                               SB Forms JS                               * *-->
-        <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
-        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
-        <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
-    </body>
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-inner">
+      <div class="hero-eyebrow">HubSpot & Marketing Consulting</div>
+      <h1>Marketing that works.<br><em>Systems that scale.</em></h1>
+      <p class="hero-sub">
+        I help B2B businesses get more from their marketing — cleaner HubSpot setups, 
+        smarter operations, and commercial systems built to grow with you.
+      </p>
+      <div class="btn-group">
+        <a href="#services" class="btn btn-primary">What I do</a>
+        <a href="#contact" class="btn btn-outline">Get in touch</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="about-grid">
+      <div class="about-text">
+        <div class="section-label">About</div>
+        <h2>Hi, I'm Sam.</h2>
+        <p>
+          I'm a marketing consultant with a focus on HubSpot, marketing operations, 
+          and the commercial systems that connect marketing to revenue.
+        </p>
+        <p>
+          I work with B2B businesses — from scale-ups to enterprise — helping them 
+          implement and get the most out of HubSpot, clean up their data, align their 
+          teams, and build processes that actually stick.
+        </p>
+        <p>
+          Whether you need a hands-on HubSpot consultant, someone to lead a migration 
+          project, or a steady pair of hands for your RevOps function — I'm here to help.
+        </p>
+      </div>
+      <div class="about-stats">
+        <div class="stat-card">
+          <div class="stat-num">HubSpot</div>
+          <div class="stat-label">Certified & experienced across Hubs</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">RevOps</div>
+          <div class="stat-label">Aligning marketing, sales & service</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">B2B</div>
+          <div class="stat-label">Specialist focus on B2B businesses</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">Remote</div>
+          <div class="stat-label">UK-based, <br>working globally</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="services-header">
+      <div class="section-label">Services</div>
+      <h2>What I can help with</h2>
+    </div>
+    <div class="services-grid">
+
+      <div class="service-card">
+        <div class="service-icon"><i class="fa-brands fa-hubspot"></i></div>
+        <h3>HubSpot Implementation</h3>
+        <p>From initial onboarding to complex multi-hub setups. I'll configure HubSpot to match your business processes — not the other way around.</p>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon"><i class="fa-solid fa-gears"></i></div>
+        <h3>Marketing Operations</h3>
+        <p>Process design, automation, lead management, and reporting. The plumbing that makes your marketing engine run cleanly and efficiently.</p>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon"><i class="fa-regular fa-chart-bar"></i></div>
+        <h3>RevOps & Commercial Systems</h3>
+        <p>Aligning your marketing, sales and customer success data and processes. Visibility across the funnel and systems that teams actually use.</p>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon"><i class="fa-solid fa-arrow-right-arrow-left"></i></div>
+        <h3>Migrations & Audits</h3>
+        <p>Moving from another platform to HubSpot, or cleaning up a messy portal? I'll scope it, plan it, and deliver it with minimal disruption.</p>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon"><i class="fa-solid fa-plug"></i></div>
+        <h3>Integrations & Data</h3>
+        <p>Connecting HubSpot to your wider tech stack — CRMs, data warehouses, BI tools, and more. Clean data in, meaningful insights out.</p>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon"><i class="fa-regular fa-compass"></i></div>
+        <h3>Strategy & Advisory</h3>
+        <p>Not sure where to start? I can help you assess where you are, identify the gaps, and build a roadmap for what to fix first.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="contact-inner">
+      <div class="section-label">Contact</div>
+      <h2>Let's talk.</h2>
+      <p class="contact-sub">
+        Whether you have a specific project in mind or just want to explore what's possible — 
+        drop me a message. I'm always happy to have a conversation.
+      </p>
+      <div class="contact-links">
+        <a href="/cdn-cgi/l/email-protection#aeddcfc3eeddcfc3cbc2c2cb80cdc180dbc5" class="contact-link">
+          <div class="contact-link-icon"><i class="fa-regular fa-envelope"></i></div>
+          <div class="contact-link-text">
+            <strong>Email</strong>
+            <span><span class="__cf_email__" data-cfemail="aad9cbc7ead9cbc7cfc6c6cf84c9c584dfc1">[email&#160;protected]</span></span>
+          </div>
+        </a>
+        <a href="https://www.linkedin.com/in/samlongley" target="_blank" rel="noopener" class="contact-link">
+          <div class="contact-link-icon"><i class="fa-brands fa-linkedin"></i></div>
+          <div class="contact-link-text">
+            <strong>LinkedIn</strong>
+            <span>linkedin.com/in/samlongley</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <span class="footer-brand">Samelle</span>
+    <span class="footer-copy">© 2026 Samelle Ltd · samelle.co.uk</span>
+  </footer>
+
+  <script>
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 20);
+    });
+  </script>
+
+</body>
 </html>
